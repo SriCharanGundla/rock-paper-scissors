@@ -60,7 +60,5 @@ let playerScore = 0;
 let computerScore = 0;
 
 game();
-console.log(playerScore);
-console.log(computerScore);
 
 //console.log(playRound(playerSelection,computerSelection));
