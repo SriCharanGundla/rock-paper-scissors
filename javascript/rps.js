@@ -1,4 +1,5 @@
 let getComputerChoice = function () {
+  //Picks a random option for computer's choice and returns the string.
   let choiceArr = ["Rock", "Paper", "Scissors"];
   let randomIndex = Math.floor(Math.random() * choiceArr.length);
   let choice = choiceArr[randomIndex];
@@ -6,6 +7,7 @@ let getComputerChoice = function () {
 };
 
 let playRound = function (playerSelection, computerSelection) {
+  //Function to check the winner of a round of RPS
   //let res;
   if (playerSelection === "rock" && computerSelection === "paper") {
     //res = 'You Lose! Paper beats Rock';
@@ -34,6 +36,7 @@ let playRound = function (playerSelection, computerSelection) {
 };
 
 let game = function () {
+  //Function which initiates 5 rounds of RPS, keeps the count of scores and displays the winner
   let i;
   for (i = 0; i < 5; i++) {
     let playerSelection = prompt(
@@ -56,8 +59,8 @@ let game = function () {
   }
 };
 
-let playerScore = 0;
-let computerScore = 0;
+let playerScore = 0; //initialization
+let computerScore = 0; //initialization
 
 game();
 
