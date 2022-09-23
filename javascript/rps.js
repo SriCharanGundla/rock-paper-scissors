@@ -10,58 +10,108 @@ let playRound = function (playerSelection, computerSelection) {
   //Function to check the winner of a round of RPS
   //let res;
   if (playerSelection === "rock" && computerSelection === "paper") {
-    //res = 'You Lose! Paper beats Rock';
+    //res = "You Lose! Paper beats Rock";
     computerScore += 1;
   } else if (playerSelection === "rock" && computerSelection === "scissors") {
-    //res = 'You Win! Rock beats Scissors';
+    //res = "You Win! Rock beats Scissors";
     playerScore += 1;
   } else if (playerSelection === "paper" && computerSelection === "rock") {
-    //res = 'You Win! Paper beats Rock';
+    //res = "You Win! Paper beats Rock";
     playerScore += 1;
   } else if (playerSelection === "paper" && computerSelection === "scissors") {
-    //res = 'You Lose! Scissors beats Paper';
+    //res = "You Lose! Scissors beats Paper";
     computerScore += 1;
   } else if (playerSelection === "scissors" && computerSelection === "paper") {
-    //res = 'You Win! Scissors beats Paper';
+    //res = "You Win! Scissors beats Paper";
     playerScore += 1;
   } else if (playerSelection === "scissors" && computerSelection === "rock") {
-    //res = 'You Lose! Rock beats Scissors';
+    //res = "You Lose! Rock beats Scissors";
     computerScore += 1;
   } else if (playerSelection === computerSelection) {
     playerScore += 0;
     computerScore += 0;
     //res = "It's a tie!";
   }
+  //console.log(res);
   //return res;
 };
 
 let game = function () {
   //Function which initiates 5 rounds of RPS, keeps the count of scores and displays the winner
-  let i;
-  for (i = 0; i < 5; i++) {
-    let playerSelection = prompt(
-      "Enter a choice - Rock,Paper or Scissors"
-    ).toLowerCase();
-    let computerSelection = getComputerChoice().toLowerCase();
-    playRound(playerSelection, computerSelection);
+  let computerSelection;
+
+  rock.addEventListener("click", selectRock);
+  paper.addEventListener("click", selectPaper);
+  scissors.addEventListener("click", selectScissors);
+
+  function selectRock() {
+    if (playerScore == 5) {
+      result.textContent = "You have won the game";
+    } else if (computerScore == 5) {
+      result.textContent = "You have lost the game";
+    } else {
+      computerSelection = getComputerChoice().toLowerCase();
+      playRound("rock", computerSelection);
+    }
+    current.innerHTML = `You chose ROCK and Computer chose ${computerSelection.toUpperCase()} <br> Player: ${playerScore} Computer: ${computerScore}`;
+    document.body.appendChild(current);
   }
 
-  if (parseInt(playerScore) > parseInt(computerScore)) {
-    console.log(
-      `You Win! Your score is ${playerScore} and the computer's score is ${computerScore}`
-    );
-  } else if (parseInt(playerScore) < parseInt(computerScore)) {
-    console.log(
-      `You Lose! Your score is ${playerScore} and the computer's score is ${computerScore}`
-    );
-  } else if (parseInt(playerScore) == parseInt(computerScore)) {
-    console.log(`It's a tie!`);
+  function selectPaper() {
+    if (playerScore == 5) {
+      result.textContent = "You have won the game";
+    } else if (computerScore == 5) {
+      result.textContent = "You have lost the game";
+    } else {
+      computerSelection = getComputerChoice().toLowerCase();
+      playRound("paper", computerSelection);
+    }
+    current.innerHTML = `You chose PAPER and Computer chose ${computerSelection.toUpperCase()} <br> Player: ${playerScore} Computer: ${computerScore}`;
+    document.body.appendChild(current);
+  }
+
+  function selectScissors() {
+    if (playerScore == 5) {
+      result.textContent = "You have won the game";
+    } else if (computerScore == 5) {
+      result.textContent = "You have lost the game";
+    } else {
+      computerSelection = getComputerChoice().toLowerCase();
+      playRound("scissors", computerSelection);
+    }
+    current.innerHTML = `You chose SCISSORS and Computer chose ${computerSelection.toUpperCase()} <br> Player: ${playerScore} Computer: ${computerScore}`;
+    document.body.appendChild(current);
   }
 };
 
 let playerScore = 0; //initialization
 let computerScore = 0; //initialization
 
+let div = document.createElement("div");
+let current = document.createElement("p");
+let resultDiv = document.createElement("div");
+let result = document.createElement("p");
+
+let para = document.createElement("p");
+para.textContent = "Choose an option:";
+
+let rock = document.createElement("button");
+rock.textContent = "Rock";
+
+let paper = document.createElement("button");
+paper.textContent = "Paper";
+
+let scissors = document.createElement("button");
+scissors.textContent = "Scissors";
+
+div.appendChild(para);
+div.appendChild(rock);
+div.appendChild(paper);
+div.appendChild(scissors);
+document.body.appendChild(div);
+
 game();
 
+resultDiv.appendChild(result);
+document.body.appendChild(resultDiv);
 //console.log(playRound(playerSelection,computerSelection));
