@@ -46,41 +46,50 @@ let game = function () {
 
   function selectRock() {
     if (playerScore == 5) {
-      result.textContent = "You have won the game";
+      result.innerHTML = "<strong>You have won the game!</strong>";
     } else if (computerScore == 5) {
-      result.textContent = "You have lost the game";
+      result.innerHTML = "<strong>You have lost the game!</strong>";
     } else {
       computerSelection = getComputerChoice().toLowerCase();
       playRound("rock", computerSelection);
+      result.innerHTML = "";
     }
     current.innerHTML = `You chose ROCK and Computer chose ${computerSelection.toUpperCase()} <br> Player: ${playerScore} Computer: ${computerScore}`;
     document.body.appendChild(current);
+    resultDiv.appendChild(result);
+    document.body.appendChild(resultDiv);
   }
 
   function selectPaper() {
     if (playerScore == 5) {
-      result.textContent = "You have won the game";
+      result.innerHTML = "<strong>You have won the game!</strong>";
     } else if (computerScore == 5) {
-      result.textContent = "You have lost the game";
+      result.innerHTML = "<strong>You have lost the game!</strong>";
     } else {
       computerSelection = getComputerChoice().toLowerCase();
       playRound("paper", computerSelection);
+      result.innerHTML = "";
     }
     current.innerHTML = `You chose PAPER and Computer chose ${computerSelection.toUpperCase()} <br> Player: ${playerScore} Computer: ${computerScore}`;
     document.body.appendChild(current);
+    resultDiv.appendChild(result);
+    document.body.appendChild(resultDiv);
   }
 
   function selectScissors() {
     if (playerScore == 5) {
-      result.textContent = "You have won the game";
+      result.innerHTML = "<strong>You have won the game!</strong>";
     } else if (computerScore == 5) {
-      result.textContent = "You have lost the game";
+      result.innerHTML = "<strong>You have lost the game!</strong>";
     } else {
       computerSelection = getComputerChoice().toLowerCase();
       playRound("scissors", computerSelection);
+      result.innerHTML = "";
     }
     current.innerHTML = `You chose SCISSORS and Computer chose ${computerSelection.toUpperCase()} <br> Player: ${playerScore} Computer: ${computerScore}`;
     document.body.appendChild(current);
+    resultDiv.appendChild(result);
+    document.body.appendChild(resultDiv);
   }
 };
 
@@ -93,7 +102,7 @@ let resultDiv = document.createElement("div");
 let result = document.createElement("p");
 
 let para = document.createElement("p");
-para.textContent = "Choose an option:";
+para.innerHTML = "First to 5 points wins! <br><br> Choose an option:";
 
 let rock = document.createElement("button");
 rock.textContent = "Rock";
@@ -112,6 +121,4 @@ document.body.appendChild(div);
 
 game();
 
-resultDiv.appendChild(result);
-document.body.appendChild(resultDiv);
 //console.log(playRound(playerSelection,computerSelection));
